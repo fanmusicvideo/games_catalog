@@ -9,11 +9,12 @@ from .views import (
     developer_delete, developer_create, developer_update, developer_list,
     license_list, license_create, license_delete, license_update,
     award_create, award_delete, award_update, award_list,
-    document_create, document_delete, document_update, document_list, document_open
-
+    document_create, document_delete, document_update, document_list, document_open,
+    about
 )
 
 urlpatterns = [
+    path('about', about, name='about'),
     path('genre-list', genre_list, name='genre-list'),
     path('genre-create', genre_create, name='genre-create'),
     path('genre-update/<int:id>', genre_update, name='genre-update'),
