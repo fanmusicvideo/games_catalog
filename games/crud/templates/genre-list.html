@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card-body">
+    <h4>Genre List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for genre in genres %}
+            <tr>
+                <td>{{ genre.name }}</td>
+                <td>
+                    <a type="button" class="btn btn-warning" href="/genre-update/{{ genre.id }}">Update</a>
+                    <a type="button" class="btn btn-danger" href="/genre-delete/{{ genre.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a type="button" class="btn btn-success" href="{%url 'genre-create' %}">Create</a>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card-body">
+    <h4>Rating List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rating in ratings %}
+            <tr>
+                <td>{{ rating.name }}</td>
+                <td>
+                    <a type="button" class="btn btn-warning" href="/rating-update/{{ rating.id }}">Update</a>
+                    <a type="button" class="btn btn-danger" href="/rating-delete/{{ rating.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a type="button" class="btn btn-success" href="{%url 'rating-create' %}">Create</a>
+</div>
+{% endblock %}

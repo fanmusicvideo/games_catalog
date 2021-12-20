@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card-body">
+    <h4>License List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for license in licenses %}
+            <tr>
+                <td>{{ license.name }}</td>
+                <td>{{ license.description }}</td>
+                <td>
+                    <a type="button" class="btn btn-warning" href="/license-update/{{ license.id }}">Update</a>
+                    <a type="button" class="btn btn-danger" href="/license-delete/{{ license.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a type="button" class="btn btn-success" href="{%url 'license-create' %}">Create</a>
+</div>
+{% endblock %}

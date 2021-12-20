@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card-body">
+    <h4>Award List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for award in awards %}
+            <tr>
+                <td>{{ award.name }}</td>
+                <td>{{ award.description }}</td>
+                <td>
+                    <a type="button" class="btn btn-warning" href="/award-update/{{ award.id }}">Update</a>
+                    <a type="button" class="btn btn-danger" href="/award-delete/{{ award.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a type="button" class="btn btn-success" href="{%url 'award-create' %}">Create</a>
+</div>
+{% endblock %}

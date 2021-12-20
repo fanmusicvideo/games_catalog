@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card-body">
+    <h4>Developer List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for developer in developers %}
+            <tr>
+                <td>{{ developer.name }}</td>
+                <td>{{ developer.description }}</td>
+                <td>
+                    <a type="button" class="btn btn-warning" href="/developer-update/{{ developer.id }}">Update</a>
+                    <a type="button" class="btn btn-danger" href="/developer-delete/{{ developer.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a type="button" class="btn btn-success" href="{%url 'developer-create' %}">Create</a>
+</div>
+{% endblock %}

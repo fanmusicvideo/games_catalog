@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card-body">
+    <h4>Company List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for company in companies %}
+            <tr>
+                <td>{{ company.name }}</td>
+                <td>{{ company.description }}</td>
+                <td>
+                    <a type="button" class="btn btn-warning" href="/company-update/{{ company.id }}">Update</a>
+                    <a type="button" class="btn btn-danger" href="/company-delete/{{ company.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a type="button" class="btn btn-success" href="{%url 'company-create' %}">Create</a>
+</div>
+{% endblock %}

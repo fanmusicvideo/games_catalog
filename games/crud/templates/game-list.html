@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card-body">
+    <h4>Game List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Genres</th>
+                <th scope="col">Publishers</th>
+                <th scope="col">Developers</th>
+                <th scope="col">Companies</th>
+                <th scope="col">Awards</th>
+                <th scope="col">Licenses</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for game in games %}
+            <tr>
+                <td>{{ game.title }}</td>
+                <td>{{ game.description }}</td>
+                <td>{{ game.rating }}</td>
+                <td>
+                    {% for genre in game.genres.all %}
+                        {{ genre.name }}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for publisher in game.publishers.all %}
+                        {{ publisher.name }}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for developer in game.developers.all %}
+                        {{ developer.name }}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for company in game.companies.all %}
+                        {{ company.name }}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for award in game.awards.all %}
+                        {{ award.name }}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for license in game.licenses.all %}
+                        {{ license.name }}
+                    {% endfor %}
+                </td>
+                <td>
+                    <a type="button" class="btn btn-warning" href="/game-update/{{ game.id }}">Update</a>
+                    <a type="button" class="btn btn-danger" href="/game-delete/{{ game.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a type="button" class="btn btn-success" href="{%url 'game-create' %}">Create</a>
+</div>
+{% endblock %}
